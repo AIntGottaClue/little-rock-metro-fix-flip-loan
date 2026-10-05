@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CityContent from '../components/CityContent.astro';
+import {brand,domain,cities} from '../data/cities';
+const title='Fix and Flip Loans in Central Arkansas | Little Rock Metro Fix & Flip Loan';
+const description='We connect Little Rock, North Little Rock, Conway and Benton area investors with fix and flip funding sources. Funding within 48 hours. Tell us your goal.';
+const businessId=`https://${domain}/#business`;
+const faq=[{q:'Are you a direct lender?',a:'No. We are connectors. We introduce investors to funding sources, and the funding source determines eligibility and terms.'},{q:'Does submitting guarantee funding?',a:'No. A submission starts a review, not an approval or commitment.'}];
+const areas=cities.map(c=>({'@type':'City',name:c.name,containedInPlace:{'@type':'State',name:'Arkansas'}}));
+const jsonld=[{'@context':'https://schema.org','@type':'WebSite',name:brand,url:`https://${domain}/`},{'@context':'https://schema.org','@type':'FinancialService','@id':businessId,name:brand,url:`https://${domain}/`,areaServed:areas,description:'Fix and flip funding connections for real estate investors across Little Rock, North Little Rock, Conway, Benton and the surrounding Pulaski, Saline, Faulkner and Lonoke county area. Not a direct lender.'},{'@context':'https://schema.org','@type':'Service',serviceType:'Fix and flip funding connection service',provider:{'@id':businessId},areaServed:areas},{'@context':'https://schema.org','@type':'FAQPage',mainEntity:faq.map(f=>({'@type':'Question',name:f.q,acceptedAnswer:{'@type':'Answer',text:f.a}}))}];
+---
+<Base title={title} description={description} path="/" jsonld={jsonld}><Header/><main><CityContent cityName="Little Rock Metro" location="Homepage" intro="Central Arkansas runs from the Quapaw Quarter bungalows of Little Rock to the commuter subdivisions of Cabot, Bryant and Conway, and each town has its own buyer. Tell us about the home, the work you plan and how you expect to sell. We are connectors, and we introduce your project to funding sources for funding within 48 hours." angle="A Hillcrest cottage, a North Little Rock Argenta bungalow and a Bryant subdivision home call for different scopes and sell to different buyers. Start with the real condition of the house, the work you plan and recent sales from the same neighborhood." caution="Clay soils, river flooding and old mid-century wiring all come up in this market. Check them before you rely on a budget, and tell us what you have already confirmed." showCityGrid={true}/></main><Footer/></Base>
