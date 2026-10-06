@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://littlerockfixandflip.loansapp.cfd/sitemap.xml
